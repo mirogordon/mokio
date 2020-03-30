@@ -1,0 +1,19 @@
+= form_with(method: :get, class: 'mokio-filter-form', local: true)
+  - selected_value = params[:mokio_filters] ? params[:mokio_filters][:active] : nil
+  p Filtry:
+  div.holder
+    = label(:mokio_filters, :active, "Active")
+    = select( \
+      :mokio_filters, \
+      :active, \
+      options_for_select([['Aktywny', true], ['Nieaktywny', false]], selected_value), \
+      include_blank: true \
+    )
+  div.holder
+    = label(:mokio_filters, :created_at, "Created at")
+    - date_value = params[:mokio_filters] ? params[:mokio_filters][:created_at] : nil
+    = date_field( \
+      :mokio_filters, \
+      :created_at, \
+      value: date_value \
+    )

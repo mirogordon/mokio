@@ -8,8 +8,19 @@ module Mokio
         extend ActiveSupport::Concern
 
         included do
-
         end
+
+        module ClassMethods
+          def filter_index_config
+            {
+              active: {
+                field_type: 'select',
+                values: [{'Aktywny': true}, {'Nieaktywny': false}]
+              }
+            }
+          end
+        end
+
       end
     end
   end
